@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Today | Location Not Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='error.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="content-wrapper">
+        <div class="logo">
+          <i class="fas fa-cloud-sun"></i>
+          <h1>Weather Today</h1>
+        </div>
+
+        <div class="error-card">
+          <div class="error-icon">
+            <i class="fas fa-map-marker-slash"></i>
+          </div>
+
+          <div class="error-message">
+            <h2>Location Not Found</h2>
+            <p>
+              We couldn't find weather data for "<span class="invalid-location"
+                >{{ location }}</span
+              >"
+            </p>
+          </div>
+
+          <div class="suggestions">
+            <h3>Suggestions:</h3>
+            <ul>
+              <li>Check the spelling of your location</li>
+            </ul>
+          </div>
+
+          <form
+            method="POST"
+            action="{{ url_for('get_weather') }}"
+            class="retry-form"
+          >
+            <div class="search-box">
+              <input
+                type="text"
+                name="location"
+                placeholder="Try another location"
+              />
+              <button type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="back-link">
+            <a href="{{ url_for('home') }}"
+              ><i class="fas fa-arrow-left"></i> Return to Home</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="background">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+      </div>
+    </div>
+  </body>
+</html>

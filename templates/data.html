@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Today | {{ weather.location.name }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='response.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="response-container">
+      <div class="content-wrapper">
+        <div class="header">
+          <div class="logo">
+            <i class="fas fa-cloud-sun"></i>
+            <a href="{{url_for('home')}}">Weather Today</a>
+          </div>
+          <form
+            method="POST"
+            action="{{ url_for('get_weather') }}"
+            class="search-form"
+          >
+            <div class="search-box">
+              <input
+                type="text"
+                name="location"
+                placeholder="Search another location"
+                value="{{ weather.location.name }}"
+              />
+              <button type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="weather-card">
+          <div class="location-info">
+            <h2>{{ weather.location.name }}</h2>
+            <div class="location-details">
+              <span
+                ><i class="fas fa-map-marker-alt"></i> {{
+                weather.location.country }}</span
+              >
+              <span
+                ><i class="far fa-clock"></i> {{ weather.location.localtime
+                }}</span
+              >
+            </div>
+          </div>
+
+          <div class="main-weather">
+            <div class="temperature">
+              <span class="temp-value">{{ weather.current.temp_c }}</span>
+              <span class="temp-unit">°C</span>
+            </div>
+            <div class="condition">
+              <span class="condition-text"
+                >{{ weather.current.condition.text }}</span
+              >
+            </div>
+          </div>
+
+          <div class="weather-details">
+            <div class="detail-item">
+              <div class="detail-icon"><i class="fas fa-wind"></i></div>
+              <div class="detail-info">
+                <span class="detail-label">Wind Speed</span>
+                <span class="detail-value"
+                  >{{ weather.current.wind_kph }} km/h</span
+                >
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon"><i class="fas fa-compass"></i></div>
+              <div class="detail-info">
+                <span class="detail-label">Wind Direction</span>
+                <span class="detail-value">{{ weather.current.wind_dir }}</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon"><i class="fas fa-tint"></i></div>
+              <div class="detail-info">
+                <span class="detail-label">Humidity</span>
+                <span class="detail-value"
+                  >{{ weather.current.humidity }}%</span
+                >
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">
+                <i class="fas fa-thermometer-half"></i>
+              </div>
+              <div class="detail-info">
+                <span class="detail-label">Feels Like</span>
+                <span class="detail-value"
+                  >{{ weather.current.feelslike_c }}°C</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="air-quality">
+            <h3>Air Quality</h3>
+            <div class="air-quality-grid">
+              <div class="air-quality-item">
+                <div class="air-label">CO</div>
+                <div class="air-value">
+                  {{ weather.current.air_quality.co }}
+                </div>
+              </div>
+
+              <div class="air-quality-item">
+                <div class="air-label">PM10</div>
+                <div class="air-value">
+                  {{ weather.current.air_quality.pm10 }}
+                </div>
+              </div>
+
+              <div class="air-quality-item">
+                <div class="air-label">PM2.5</div>
+                <div class="air-value">
+                  {{ weather.current.air_quality.pm2_5 }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="background">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+      </div>
+    </div>
+  </body>
+</html>

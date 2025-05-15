@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Today</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='index.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="landing-container">
+      <div class="content-wrapper">
+        <div class="logo">
+          <i class="fas fa-cloud-sun"></i>
+          <h1>Weather Today</h1>
+        </div>
+
+        <div class="description">
+          <h2>Real-time weather updates, simplified.</h2>
+          <p>
+            Get accurate weather forecasts instantly for any location around the
+            world.
+          </p>
+        </div>
+
+        <div class="search-container">
+          <form method="POST" action="{{url_for('get_weather')}}">
+            <div class="search-box">
+              <input
+                type="text"
+                name="location"
+                placeholder="Enter your location"
+                required
+              />
+              <button type="submit">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-bolt"></i>
+            <span>Fast</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Accurate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="background">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+      </div>
+    </div>
+  </body>
+</html>
