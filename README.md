@@ -39,7 +39,7 @@ docker build -t weather .
 ### 4. Run the Docker Container
 
 ```bash
-docker run -d -p 8000:8000 weather-today-app
+docker run -d -p 8000:8000 weather
 ```
 
 ### 5. Access the App
